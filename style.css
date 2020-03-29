@@ -1,0 +1,11 @@
+body{
+    background-color: #E3E2F3;
+}
+.main-content{
+    padding: 20px;
+}
+@media screen and (min-width: 480px) {
+    .total-content{
+        display: block;
+    }
+  }
