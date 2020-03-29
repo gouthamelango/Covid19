@@ -20,15 +20,17 @@ const generateHtml2 = (data) =>{
     document.querySelector('.total_new_deaths_today').innerHTML = data.results[0].total_new_deaths_today
 }
 
-fetch('https://thevirustracker.com/free-api?countryTotals=ALL')
+fetch('https://corona.lmao.ninja/countries?sort=country')
     .then(res => res.json())
     .then(data =>generateHtml1(data))
 
     const generateHtml1 = (data) =>{
-        console.log(data);
-        
-        //const html = '<div class= "cases">'+ data.countryitems[0][1].title +  ' <br>'+data.countryitems[0][2].title+'</div>'
-        //const casdiv = document.querySelector('.total1')
-        // casdiv.innerHTML = html
+        console.log(data); 
+        document.querySelector('.incases').innerHTML = data[113].cases
+        document.querySelector('.inrecovered').innerHTML = data[113].recovered
+        document.querySelector('.indeaths').innerHTML = data[113].deaths
+        document.querySelector('.inactive').innerHTML = data[113].active
+        document.querySelector('.intodaycases').innerHTML = data[113].todayCases
+        document.querySelector('.intodaydeaths').innerHTML = data[113].todayDeaths
     }
     
