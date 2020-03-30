@@ -1,11 +1,12 @@
 <html>
     <head>
         <title>COVID19 INDIA</title>
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     </head>
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
     <script src="script.js"></script>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -143,14 +144,15 @@
             <div class="main-content">
                 
                 <div class="state-table">
-                        <table class="table table-striped" style="width: 800px; margin: auto;">
+                        <table class="table table-striped " style="width: 900px; margin: auto;">
                                 <thead class="thead-dark">
                                   <tr>
-                                    <th scope="col">State</th>
-                                    <th scope="col">Confirmed Indian Cases</th>
-                                    <th scope="col">Confirmed Foreign Cases</th>
-                                    <th scope="col">Recovered</th>
-                                    <th scope="col">Deaths</th>
+                                    <th scope="col" class="sticky-top">State</th>
+                                    <th scope="col" class="sticky-top">Confirmed Indian Cases</th>
+                                    <th scope="col" class="sticky-top">Confirmed Foreign Cases</th>
+                                    <th scope="col" class="sticky-top">Recovered</th>
+                                    <th scope="col" class="sticky-top">Deaths</th>
+                                    <th scope="col" class="sticky-top" colspan="2">District Wise</th>
                                   </tr>
                                 </thead>
                                 <tbody id = "data">
@@ -168,13 +170,15 @@
                                                 var temp = "";
 
                                                 for (i = 0; i < data.data.regional.length; i++) {
+                                                    
                                                     temp +="<tr>"
                                                     temp += "<td>"+data.data.regional[i].loc+"</td>"
                                                     temp += "<td>"+data.data.regional[i].confirmedCasesIndian+"</td>"
                                                     temp += "<td>"+data.data.regional[i].confirmedCasesForeign+"</td>"
                                                     temp += "<td>"+data.data.regional[i].discharged+"</td>"
-                                                    temp += "<td>"+data.data.regional[i].deaths+"</td></tr>"
-
+                                                    temp += "<td>"+data.data.regional[i].deaths+"</td>"
+                                                    temp += "<td>"+'<button type="button" id="'+data.data.regional[i].loc+'" class = "btn btn-primary" onclick="mopen(this)" data-toggle="modal" data-target="#exampleModalCenter"><svg class="bi bi-eye-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M10.5 8a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"/><path fill-rule="evenodd" d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 100-7 3.5 3.5 0 000 7z" clip-rule="evenodd"/></svg></button>'+"</td>"
+                                                    temp += '<td> <input type="hidden"size="1" value="'+data.data.regional[i].loc+'"></td></tr>'
                                                 }
                                                 document.getElementById("data").innerHTML = temp;
 
@@ -184,21 +188,75 @@
                                 }
                             )
                         </script>
+                        
+                        
                 </div>
-            </div>
-            <br>
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <!-- ad1 -->
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-5746594117628937"
-                 data-ad-slot="8634602832"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                                    <table class="table table-striped " style="width: 300px; margin: auto;">
+                                            <thead class="thead-dark">
+                                              <tr>
+                                                <th scope="col"class="sticky-top">District</th>
+                                                <th scope="col"class="sticky-top">Confirmed</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody id = "dis-data">
             
+                                            </tbody>
+                                            
+                                    </table>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                
+            </div>
+            <script>
+                function mopen(btn){
+                    document.getElementById("exampleModalCenterTitle").innerHTML = btn.id;
+                    var loc = btn.id;
+                    fetch('https://api.covid19india.org/state_district_wise.json').then(
+                                res=>{
+                                    res.json().then(
+                                        data=>{
+                                            const x = JSON.parse(JSON.stringify(data))
+                                            console.log(data)
+                                            if(Object.keys(data).length>0){
+                                                var temp1 =""
+                                                for (i = 0; i < Object.keys(data).length ; i++){
+                                                    if(Object.keys(data)[i]==loc){
+                                                        console.log(x[loc].districtData);
+                                                        for(var dd in x[loc].districtData){
+                                                            const y = JSON.parse(JSON.stringify(x[loc].districtData[dd].confirmed))
+                                                            console.log(dd)
+                                                            console.log(y)
+                                                            temp1 +="<tr>"
+                                                            temp1 += "<td>"+dd+"</td>"
+                                                            temp1 += "<td>"+y+"</td></tr>"
+                                                        }
+                                                        break;
+                                                    }
+                                                }
+                                                document.getElementById("dis-data").innerHTML = temp1; 
+                                            }
+                                            
+                                        }
+                                    )
+                                }
+                            )
+                }
+            </script>
             <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>    
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
