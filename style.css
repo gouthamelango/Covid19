@@ -4,8 +4,15 @@ body{
 .main-content{
     padding: 20px;
 }
+    
 @media screen and (min-width: 480px) {
     .total-content{
-        display: block;
+        margin-left:0px;
+        display: inline-flex;padding: 20px;
     }
   }
+@media screen and (min-width: 1200px) {
+    .total-content{
+        display: inline-flex;padding: 20px;margin-left:235px;
+}
+}
