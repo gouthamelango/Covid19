@@ -47,9 +47,9 @@
                     </div>
                 </div>
             <div class="main-content">
-                <h5>COVID19 TOTAL CASES:</h5>
+                <center><h5>COVID19 TOTAL CASES:</h5></center>
                     <br>
-                    <div style="display: inline-flex;padding: 20px;margin:auto;width: auto;"class="total-content">
+                    <div style="display: inline-flex;padding: 20px;margin-left:235px;"class="total-content">
                             <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
                                     <div class="card-header">Total Cases</div>
                                         <div class="card-body">
@@ -95,8 +95,8 @@
                     
             </div>  
             <div class="main-content">
-                <h5>COVID19 INDIA:</h5>
-                <div style="display: inline-flex;padding: 20px;margin:auto;width: auto;"class="total-content">
+                <center><h5>COVID19 INDIA:</h5></center>
+                <div style="display: inline-flex;padding: 20px;margin-left:235px;"class="total-content">
                         <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
                                 <div class="card-header">Total Cases</div>
                                     <div class="card-body">
@@ -138,6 +138,52 @@
                                          <h5><p class="card-text , intodaydeaths"></p></h5>
                                     </div>
                             </div>
+                </div>
+            </div>
+            <div class="main-content">
+                
+                <div class="state-table">
+                        <table class="table table-striped" style="width: 800px; margin: auto;">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th scope="col">State</th>
+                                    <th scope="col">Confirmed Indian Cases</th>
+                                    <th scope="col">Confirmed Foreign Cases</th>
+                                    <th scope="col">Recovered</th>
+                                    <th scope="col">Deaths</th>
+                                  </tr>
+                                </thead>
+                                <tbody id = "data">
+
+                                </tbody>
+                                
+                        </table>
+                        <script>
+                            fetch('https://api.rootnet.in/covid19-in/stats/').then(
+                                res=>{
+                                    res.json().then(
+                                        data=>{
+                                            console.log(data)
+                                            if(data.data.regional.length>0){
+                                                var temp = "";
+
+                                                for (i = 0; i < data.data.regional.length; i++) {
+                                                    temp +="<tr>"
+                                                    temp += "<td>"+data.data.regional[i].loc+"</td>"
+                                                    temp += "<td>"+data.data.regional[i].confirmedCasesIndian+"</td>"
+                                                    temp += "<td>"+data.data.regional[i].confirmedCasesForeign+"</td>"
+                                                    temp += "<td>"+data.data.regional[i].discharged+"</td>"
+                                                    temp += "<td>"+data.data.regional[i].deaths+"</td></tr>"
+
+                                                }
+                                                document.getElementById("data").innerHTML = temp;
+
+                                            }
+                                        }
+                                    )
+                                }
+                            )
+                        </script>
                 </div>
             </div>
             
