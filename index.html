@@ -1,17 +1,17 @@
 <html>
     <head>
-        <title>COVID19 INDIA</title>
+        <title>COVID-19 INDIA</title>
         
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     </head>
     
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style1.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-    <script src="script.js"></script>
+    <script src="script1.js"></script>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">COVID19 INDIA</a>
+            <a class="navbar-brand" href="#">COVID-19 INDIA</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -49,7 +49,7 @@
                     </div>
                 </div>
             <div class="main-content">
-                <center><h5>COVID19 TOTAL CASES:</h5></center>
+                <center><h5>COVID-19 TOTAL CASES</h5></center>
                     <br>
                     <div class="total-content">
                             <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
@@ -94,101 +94,100 @@
                                         </div>
                                 </div>
                     </div>
-                    
             </div>  
-            <div class="main-content">
-                
-            </div>
             <div class="">
-                    <center><h5>COVID19 INDIA:</h5></center>
-
-                    
-                    
-                    <div class="total-content tc " >
-                            <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                    <center><h5>COVID-19 INDIA</h5></center> <br>
+                        <div class="total-content tc " >
+                            <div class="card text-white bg-primary mb-3" style="max-width: 25rem;">
                                     <div class="card-header ">Total Cases</div>
                                         <div class="card-body">
-                                          <h5><p class="card-text , incases"></p></h5>
+                                          <p class="card-text">
+                                              <p class="incasesoff"></p>
+                                              <p class="incasesun"></p>
+                                          </p>
                                     </div>
                                 </div>
                                 &nbsp; &nbsp;
                                 <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
                                         <div class="card-header">Active</div>
                                             <div class="card-body">
-                                              <h5><p class="card-text , inactive"></p></h5>
+                                                    <p class="card-text">
+                                                            <p class="inactiveoff"></p>
+                                                            <p class="inactiveun"></p>
+                                                    </p>
                                         </div>
                                 </div>
                                 &nbsp; &nbsp;
                                 <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
                                         <div class="card-header">Recovered</div>
                                             <div class="card-body">
-                                            <h5><p class="card-text , inrecovered"></p></h5>
+                                                    <p class="card-text">
+                                                            <p class="inrecoveredoff"></p>
+                                                            <p class="inrecoveredun"></p>
+                                                    </p>
                                         </div>
                                 </div>
                                 &nbsp; &nbsp;
                                 <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
                                         <div class="card-header">Deaths</div>
                                             <div class="card-body">
-                                              <h5> <p class="card-text , indeaths"></p></h5>
+                                                    <p class="card-text">
+                                                            <p class="indeathsoff"></p>
+                                                            <p class="indeathsun"></p>
+                                                    </p>
                                         </div>
                                 </div>
-                                
-                               
-                    </div>
+                             </div>
             </div>
             <div class="main-content">
-                
+                <center><h5>State Wise Breakdown</h5></center> <br>
                 <div class="table-responsive text-nowrap">
                         <table class="table table-striped table-hover state-table">
-                                <thead class="thead-dark">
+                               <thead class="thead-dark">
                                   <tr>
-                                    <th scope="col" class="sticky-top">State</th>
-                                    <th scope="col" class="sticky-top">Confirmed Indian Cases</th>
-                                    <th scope="col" class="sticky-top">Confirmed Foreign Cases</th>
-                                    <th scope="col" class="sticky-top">Recovered</th>
-                                    <th scope="col" class="sticky-top">Deaths</th>
-                                    <th scope="col" class="sticky-top" colspan="2">District Wise</th>
-                                  </tr>
+                                    <th scope="col-sm-1" >State</th>
+                                    <th scope="col-sm-1">District Wise</th>
+                                    <th scope="col-sm-1" >Confirmed</th>
+                                    <th scope="col-sm-1">Recovered</th>
+                                    <th scope="col-sm-1" >Active</th>
+                                    <th scope="col-sm-1" >Deaths</th>
+                                   </tr>
                                 </thead>
                                 <tbody id = "data">
 
                                 </tbody>
-                                
                         </table>
                     </div>
                         <script>
-                            fetch('https://api.rootnet.in/covid19-in/stats/').then(
+                            fetch('https://api.rootnet.in/covid19-in/unofficial/covid19india.org/statewise').then(
                                 res=>{
                                     res.json().then(
                                         data=>{
                                             console.log(data)
-                                            if(data.data.regional.length>0){
+                                            console.log(data.data.statewise[0].state);
+                                            if(data.data.statewise.length>0){
                                                 var temp = "";
-
-                                                for (i = 0; i < data.data.regional.length; i++) {
-                                                    
+                                                for (i = 0; i < data.data.statewise.length; i++){
                                                     temp +="<tr>"
-                                                    temp += "<td>"+data.data.regional[i].loc+"</td>"
-                                                    temp += "<td>"+data.data.regional[i].confirmedCasesIndian+"</td>"
-                                                    temp += "<td>"+data.data.regional[i].confirmedCasesForeign+"</td>"
-                                                    temp += "<td>"+data.data.regional[i].discharged+"</td>"
-                                                    temp += "<td>"+data.data.regional[i].deaths+"</td>"
-                                                    temp += "<td>"+'<button type="button" id="'+data.data.regional[i].loc+'" class = "btn btn-primary" onclick="mopen(this)" data-toggle="modal" data-target="#exampleModalCenter"><svg class="bi bi-eye-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M10.5 8a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"/><path fill-rule="evenodd" d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 100-7 3.5 3.5 0 000 7z" clip-rule="evenodd"/></svg></button>'+"</td>"
-                                                    temp += '<td> <input type="hidden"size="1" value="'+data.data.regional[i].loc+'"></td></tr>'
+                                                    temp += "<td>"+data.data.statewise[i].state+"</td>"
+                                                    temp += "<td>"+'<button type="button" id="'+data.data.statewise[i].state+'" class = "btn btn-primary" onclick="mopen(this)" data-toggle="modal" data-target="#exampleModalCenter"><svg class="bi bi-eye-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M10.5 8a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"/><path fill-rule="evenodd" d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 100-7 3.5 3.5 0 000 7z" clip-rule="evenodd"/></svg></button>'+"</td>"
+                                                    temp += "<td>"+data.data.statewise[i].confirmed+"</td>"
+                                                    temp += "<td>"+data.data.statewise[i].recovered+"</td>"
+                                                    temp += "<td>"+data.data.statewise[i].active+"</td>"
+                                                    temp += "<td>"+data.data.statewise[i].deaths+"</td>"
+                                                    temp +="</tr>"
+
                                                 }
                                                 document.getElementById("data").innerHTML = temp;
-
+                                                
                                             }
+                                            
                                         }
                                     )
                                 }
                             )
                         </script>
-                        
-                        
-                
-                
-                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog" role="document">
                           <div class="modal-content">
                             <div class="modal-header">
@@ -257,5 +256,21 @@
             <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>    
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+            <br> <br>
+            <footer> 
+                    <center>
+                        <nav> 
+                            <p> <a href="about.html">Contact Us</a> </p> 
+                        </nav> 
+                        <p>All Right Reserved to © <a href="https://www.instagram.com/goutham.elango/">Goutham Elango</a></p>
+                        <div style="display: inline-flex;">
+                            <a href="https://github.com/Goutham-Elango" style="color:white;"><img src="git.png" width="20" height="20" alt="">&nbsp;</a>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="https://www.linkedin.com/in/gouthamelango/" style="color:white;"><img src="linkedin.png" width="20" height="20" alt="">&nbsp;</a>
+                        </div>
+                    </center>
+                    <br><br>
+            </footer> 
         </body>
 </html>
