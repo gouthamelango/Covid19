@@ -26,10 +26,22 @@ fetch('https://corona.lmao.ninja/countries?sort=country')
 
     const generateHtml1 = (data) =>{
         console.log(data); 
-        document.querySelector('.incases').innerHTML = data[113].cases
-        document.querySelector('.inrecovered').innerHTML = data[113].recovered
-        document.querySelector('.indeaths').innerHTML = data[113].deaths
-        document.querySelector('.inactive').innerHTML = data[113].active
-        
-    }
-    
+        document.querySelector('.incasesoff').innerHTML = "Official: <b> "+data[114].cases+"<b>"
+        document.querySelector('.inrecoveredoff').innerHTML = "Official: <b> "+data[114].recovered+"<b>"
+        document.querySelector('.indeathsoff').innerHTML = "Official: <b> "+data[114].deaths+"<b>"
+        document.querySelector('.inactiveoff').innerHTML = "Official: <b> "+data[114].active+"<b>"
+
+    }  
+
+    fetch('https://api.rootnet.in/covid19-in/unofficial/covid19india.org/statewise')
+    .then(res => res.json())
+    .then(data =>generateHtml3(data))
+
+    const generateHtml3 = (data) =>{
+        console.log(data); 
+       document.querySelector('.incasesun').innerHTML = "Unofficial: <b> "+data.data.total.confirmed+"<b>"
+        document.querySelector('.inrecoveredun').innerHTML = "Unofficial: <b> "+data.data.total.recovered+"<b>"
+        document.querySelector('.indeathsun').innerHTML = "Unofficial: <b> "+data.data.total.deaths+"<b>"
+        document.querySelector('.inactiveun').innerHTML = "Unofficial: <b> "+data.data.total.active+"<b>"
+
+    }  
