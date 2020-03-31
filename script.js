@@ -30,7 +30,6 @@ fetch('https://corona.lmao.ninja/countries?sort=country')
         document.querySelector('.inrecovered').innerHTML = data[113].recovered
         document.querySelector('.indeaths').innerHTML = data[113].deaths
         document.querySelector('.inactive').innerHTML = data[113].active
-        document.querySelector('.intodaycases').innerHTML = data[113].todayCases
-        document.querySelector('.intodaydeaths').innerHTML = data[113].todayDeaths
+        
     }
     
