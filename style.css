@@ -7,11 +7,13 @@ body{
 }
     
 @media screen and (max-width: 400px) {
-    
     .total-content{
         margin-left:65px;
         display: inline-block;padding:0px;
         width: 200px;
+    }
+    #chartContainer{
+        width: 350px;
     }
     .tc{
         margin-left: 80px;
@@ -33,5 +35,8 @@ body{
 .state-table{
     width:800px;margin-left: 250px;
     margin-top: 0px;
+}
+.cc{
+    width:500px;
 }
 }
