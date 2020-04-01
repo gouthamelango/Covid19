@@ -3,6 +3,7 @@
         <title>COVID-19 INDIA</title>
         
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     </head>
     
     <link rel="stylesheet" href="style.css">
@@ -51,7 +52,7 @@
             <div class="main-content">
                 <center><h5>COVID-19 TOTAL CASES</h5></center>
                     <br>
-                    <div class="total-content">
+                    <div class="total-content wow fadeInUp">
                             <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
                                     <div class="card-header">Total Cases</div>
                                         <div class="card-body">
@@ -96,8 +97,8 @@
                     </div>
             </div>  
             <div class="">
-                    <center><h5>COVID-19 INDIA</h5></center> <br>
-                        <div class="total-content tc " >
+                    <center ><h5 class="">COVID-19 INDIA</h5></center> <br>
+                        <div class="total-content tc wow fadeInUp " >
                             <div class="card text-white bg-primary mb-3" style="max-width: 25rem;">
                                     <div class="card-header ">Total Cases</div>
                                         <div class="card-body">
@@ -140,12 +141,12 @@
                              </div>
             </div>
             <center><h6>Spread Trends</h6></center>
-            <div id="chartContainer" style="height: 300px;  margin: auto;" class="cc"></div>
+            <div id="chartContainer" style="height: 300px;  margin: auto;" class="cc "></div>
             <div class="main-content">
                 <br><br>
                 <center><h5>State Wise Breakdown</h5></center> <br>
                 <div class="table-responsive text-nowrap">
-                        <table class="table table-striped table-hover state-table">
+                        <table class="table table-striped table-hover state-table ">
                                <thead class="thead-dark">
                                   <tr>
                                     <th scope="col-sm-1" >State</th>
@@ -303,7 +304,7 @@
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
             <br> <br>
-            <footer> 
+            <footer class="wow fadeInUp"> 
                     <center>
                         <nav> 
                           
@@ -318,5 +319,19 @@
                     </center>
                     <br><br>
             </footer> 
+            <script>
+                   
+                   $(window).load(function() {
+                    var wow = new WOW({
+                        boxClass: 'wow',
+                        animateClass: 'animated',
+                        offset: 0,
+                        mobile: true,
+                        live: true
+                    });
+                    wow.init();
+                });
+            </script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
         </body>
 </html>
