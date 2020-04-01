@@ -38,5 +38,11 @@ body{
 }
 .cc{
     width:500px;
+    margin: auto;
+    margin-left: 100px;
+   
+}
+.charts{
+    display: inline-flex;
 }
 }
