@@ -12,7 +12,9 @@
     <script src="script.js"></script>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">COVID-19 INDIA</a>
+                <a class="navbar-brand" href="index.html">
+                        <img src="logo.png" width="30" height="30" alt="">
+                        COVID-19 INDIA</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -22,7 +24,7 @@
                             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">News</a>
+                            <a class="nav-link" href="helplines.html">HelpLine</a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="#contact">Contact Us</a>
@@ -50,7 +52,7 @@
                     </div>
                 </div>
             <div class="main-content">
-                <center><h5>COVID-19 TOTAL CASES</h5></center>
+                <center><h5><strong>COVID-19 TOTAL CASES</strong></h5></center>
                     <br>
                     <div class="total-content wow fadeInUp">
                             <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
@@ -219,7 +221,7 @@
                                     </table>
                             </div>
                             <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="mclose()">Close</button>
                             </div>
                           </div>
                         </div>
@@ -259,6 +261,9 @@
                                     )
                                 }
                             )
+                }
+                function mclose(){
+                    document.getElementById("dis-data").innerHTML = ""
                 }
             </script>
             <script>
@@ -347,9 +352,9 @@
                     <center>
                         <nav> 
                           
-                           <p><h6>COVID-19 INDIA</h6></p>
+                           <p><h6><b>COVID-19 INDIA</b></h6></p>
                         </nav> 
-                        <p id="contact">All Right Reserved to © <a href="https://www.instagram.com/goutham.elango/">Goutham Elango</a></p>
+                        <p id="contact">All Rights Reserved to © <a href="https://www.instagram.com/goutham.elango/"><b>Goutham Elango</b></a></p>
                         <div style="display: inline-flex;">
                             <a href="https://github.com/Goutham-Elango" style="color:white;"><img src="git.png" width="20" height="20" alt="">&nbsp;</a>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
