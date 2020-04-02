@@ -27,7 +27,7 @@ body{
   }
 @media screen and (min-width: 1200px) {
     .total-content{
-        display: inline-flex;padding: 20px;margin-left:265px;
+        display: inline-flex;padding: 20px;margin-left:380px;
 }
 .tc{
     margin-left: 350px;
