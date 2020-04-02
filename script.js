@@ -10,6 +10,7 @@ const generateHtml = (data) =>{
     document.querySelector('.total_deaths').innerHTML = data.deaths
     document.querySelector('.total_active_cases').innerHTML = data.active
 }
+/*
 fetch('https://thevirustracker.com/free-api?global=stats')
     .then(res => res.json())
     .then(data => generateHtml2(data))
@@ -18,7 +19,7 @@ const generateHtml2 = (data) =>{
     //console.log(data);
     document.querySelector('.total_new_cases_today').innerHTML = data.results[0].total_new_cases_today
     document.querySelector('.total_new_deaths_today').innerHTML = data.results[0].total_new_deaths_today
-}
+}*/
 
 fetch('https://corona.lmao.ninja/countries?sort=country')
     .then(res => res.json())
