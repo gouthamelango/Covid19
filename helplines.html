@@ -115,9 +115,9 @@
                                                 var temp = "";
                                                 for (i = 0; i <data.data.contacts.regional.length; i++){
                                                     temp +="<tr>"
-                                                    temp += "<td>"+data.data.contacts.regional[i].loc+"</td>"
+                                                    temp += "<td> <b>"+data.data.contacts.regional[i].loc+"</b></td>"
                                                     
-                                                    temp += "<td>"+'<a href = "callto:'+data.data.contacts.regional[i].number+' ">'+data.data.contacts.regional[i].number+'</a>'+"</td>"
+                                                    temp += "<td> "+data.data.contacts.regional[i].number+"</td>"
                                                     temp +="</tr>"
                                                 }
                                                 document.getElementById("data").innerHTML = temp;
