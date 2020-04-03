@@ -27,11 +27,17 @@ fetch('https://corona.lmao.ninja/countries?sort=country')
 
     const generateHtml1 = (data) =>{
        // console.log(data); 
-        document.querySelector('.incasesoff').innerHTML = "Official: <b> "+data[114].cases+"<b>"
-        document.querySelector('.inrecoveredoff').innerHTML = "Official: <b> "+data[114].recovered+"<b>"
-        document.querySelector('.indeathsoff').innerHTML = "Official: <b> "+data[114].deaths+"<b>"
-        document.querySelector('.inactiveoff').innerHTML = "Official: <b> "+data[114].active+"<b>"
-
+       // console.log(data.length)
+        for(i=0;i<data.length;i++){
+            if(data[i].country=="India"){
+                document.querySelector('.incasesoff').innerHTML = "Official: <b> "+data[i].cases+"<b>"
+                document.querySelector('.inrecoveredoff').innerHTML = "Official: <b> "+data[i].recovered+"<b>"
+                document.querySelector('.indeathsoff').innerHTML = "Official: <b> "+data[i].deaths+"<b>"
+                document.querySelector('.inactiveoff').innerHTML = "Official: <b> "+data[i].active+"<b>"
+               // console.log("true")
+                break;
+            }
+        }
     }  
 
     fetch('https://api.rootnet.in/covid19-in/unofficial/covid19india.org/statewise')
