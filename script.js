@@ -27,10 +27,10 @@ fetch('https://corona.lmao.ninja/countries?sort=country')
 
     const generateHtml1 = (data) =>{
        // console.log(data); 
-        document.querySelector('.incasesoff').innerHTML = "Official: <b> "+data[115].cases+"<b>"
-        document.querySelector('.inrecoveredoff').innerHTML = "Official: <b> "+data[115].recovered+"<b>"
-        document.querySelector('.indeathsoff').innerHTML = "Official: <b> "+data[115].deaths+"<b>"
-        document.querySelector('.inactiveoff').innerHTML = "Official: <b> "+data[115].active+"<b>"
+        document.querySelector('.incasesoff').innerHTML = "Official: <b> "+data[114].cases+"<b>"
+        document.querySelector('.inrecoveredoff').innerHTML = "Official: <b> "+data[114].recovered+"<b>"
+        document.querySelector('.indeathsoff').innerHTML = "Official: <b> "+data[114].deaths+"<b>"
+        document.querySelector('.inactiveoff').innerHTML = "Official: <b> "+data[114].active+"<b>"
 
     }  
 
