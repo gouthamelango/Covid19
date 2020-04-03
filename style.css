@@ -8,16 +8,14 @@ body{
     
 @media screen and (max-width: 500px) {
     .total-content{
-        margin-left:65px;
+       
         display: inline-block;padding:0px;
         width: 200px;
     }
     #chartContainer{
         width: 350px;
     }
-    .tc{
-        margin-left: 80px;
-    }
+    
     
     .state-table{
         margin-top: 0px;
@@ -27,19 +25,18 @@ body{
   }
 @media screen and (min-width: 1200px) {
     .total-content{
-        display: inline-flex;padding: 20px;margin-left:380px;
+        display: inline-flex;padding: 20px;
+        
 }
-.tc{
-    margin-left: 350px;
-}
+
 .state-table{
-    width:800px;margin-left: 250px;
+    width:800px;
     margin-top: 0px;
 }
 .cc{
     width:500px;
     margin: auto;
-    margin-left: 100px;
+   
    
 }
 .charts{
